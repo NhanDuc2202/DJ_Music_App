@@ -8,30 +8,25 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SettingsNavigationItem(
+fun SettingsActionRowItem(
     icon: SettingsIcon,
     title: String,
+    showArrow: Boolean = false,
     onClick: () -> Unit
 ) {
     SettingsBaseItem(onClick = onClick) {
-        SettingsLeadingIcon(icon)
+        SettingsLeadingIcon(icon = icon)
         Spacer(modifier = Modifier.width(14.dp))
 
         Text(
             text = title,
             color = Color.White,
             modifier = Modifier.weight(1f)
-        )
-
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-            contentDescription = null,
-            tint = Color.White
         )
     }
 }

@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingsPathItem(
-    icon: ImageVector,
+    icon: SettingsIcon,
     title: String,
     path: String,
     onClick: () -> Unit

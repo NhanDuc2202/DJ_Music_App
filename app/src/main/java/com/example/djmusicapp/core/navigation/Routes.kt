@@ -7,4 +7,6 @@ sealed class Routes(val route: String) {
     data object Mixer : Routes("mixer")
     data object Settings : Routes("settings")
     data object Test : Routes("test")
+
+    data object DjMixer : Routes("dj_mixer")
 }

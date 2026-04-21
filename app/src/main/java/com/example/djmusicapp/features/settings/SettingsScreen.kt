@@ -8,23 +8,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FolderOpen
+import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.Mic
+import androidx.compose.material.icons.outlined.NotificationsOff
 import androidx.compose.material.icons.outlined.RadioButtonChecked
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.SettingsOverscan
+import com.example.djmusicapp.R
 import androidx.compose.material.icons.outlined.Videocam
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.djmusicapp.features.settings.components.SettingsActionItem
-import com.example.djmusicapp.features.settings.components.SettingsInfoItem
+import com.example.djmusicapp.features.settings.components.SettingsActionRowItem
+import com.example.djmusicapp.features.settings.components.SettingsIcon
 import com.example.djmusicapp.features.settings.components.SettingsNavigationItem
 import com.example.djmusicapp.features.settings.components.SettingsPathItem
 import com.example.djmusicapp.features.settings.components.SettingsSectionTitle
@@ -39,7 +41,6 @@ fun SettingsScreen(
     viewModel: SettingsViewModel = viewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    var isEnabled by remember { mutableStateOf(false) }
 
     Scaffold (
         containerColor = Color(0xFF0B0B14),
@@ -69,7 +70,7 @@ fun SettingsScreen(
 
             item {
                 SettingsNavigationItem (
-                    icon = Icons.Outlined.FolderOpen,
+                    icon = SettingsIcon.Vector(Icons.Outlined.SettingsOverscan),
                     title = "Scan Library",
                     onClick = { }
                 )
@@ -81,16 +82,16 @@ fun SettingsScreen(
 
             item {
                 SettingsToggleItem (
-                    icon = Icons.Outlined.RadioButtonChecked,
+                    icon = SettingsIcon.Vector(Icons.Outlined.RadioButtonChecked),
                     title = "View the Recording after it’s completed",
-                    checked = isEnabled,
-                    onCheckedChange = { isEnabled = it }
+                    checked = uiState.viewRecordingAfterCompleted,
+                    onCheckedChange = viewModel::onViewRecordingAfterCompletedChanged
                 )
             }
 
             item {
                 SettingsValueItem(
-                    icon = Icons.Outlined.Videocam,
+                    icon = SettingsIcon.Vector(Icons.Outlined.Videocam),
                     title = "Record Format",
                     value = "MP3",
                     onClick = { }
@@ -99,7 +100,7 @@ fun SettingsScreen(
 
             item {
                 SettingsValueItem(
-                    icon = Icons.Outlined.Videocam,
+                    icon = SettingsIcon.Vector(Icons.Outlined.Mic),
                     title = "Record Type",
                     value = "Internal Audio",
                     onClick = { }
@@ -108,7 +109,7 @@ fun SettingsScreen(
 
             item {
                 SettingsPathItem(
-                    icon = Icons.Outlined.FolderOpen,
+                    icon = SettingsIcon.Vector(Icons.Outlined.FolderOpen),
                     title = "Record Path",
                     path = "/storage/emulated/.../DJMusicGrid",
                     onClick = { }
@@ -121,17 +122,10 @@ fun SettingsScreen(
 
             item {
                 SettingsToggleItem (
-                    icon = Icons.Outlined.RadioButtonChecked,
-                    title = "View the Recording after it’s completed",
-                    checked = true,
-                    onCheckedChange = { isEnabled = it }
-                )
-            }
-
-            item {
-                SettingsActionItem(
-                    title = "Privacy Policy",
-                    onClick = { }
+                    icon = SettingsIcon.Vector(Icons.Outlined.RadioButtonChecked),
+                    title = "Use Notification Bar to Play Music",
+                    checked = uiState.useNotificationBarToPlayMusic,
+                    onCheckedChange = viewModel::onUseNotificationBarToPlayMusicChanged
                 )
             }
 
@@ -140,11 +134,71 @@ fun SettingsScreen(
             }
 
             item {
-                SettingsActionItem(
-                    title = "Send Feedback",
+                SettingsToggleItem (
+                    icon = SettingsIcon.Vector(Icons.Outlined.Language),
+                    title = "Use English Language",
+                    checked = uiState.useEnglishLanguage,
+                    onCheckedChange = viewModel::onUseEnglishLanguageChanged
+                )
+            }
+
+            item {
+                SettingsToggleItem (
+                    icon = SettingsIcon.Vector(Icons.Outlined.NotificationsOff),
+                    title = "Hide Update Reminder",
+                    checked = uiState.hideUpdateReminder,
+                    onCheckedChange = viewModel::onHideUpdateReminderChanged
+                )
+            }
+
+            item {
+                SettingsActionRowItem (
+                    icon = SettingsIcon.Vector(Icons.Outlined.Settings),
+                    title = "Check for Update",
                     onClick = { }
                 )
             }
+
+            item {
+                SettingsActionRowItem (
+                    icon = SettingsIcon.Drawable(R.drawable.feedback),
+                    title = "Feedback",
+                    onClick = { }
+                )
+            }
+
+            item {
+                SettingsActionRowItem (
+                    icon = SettingsIcon.Drawable(R.drawable.start),
+                    title = "Rate Us",
+                    onClick = { }
+                )
+            }
+
+            item {
+                SettingsActionRowItem (
+                    icon = SettingsIcon.Drawable(R.drawable.share),
+                    title = "Share App",
+                    onClick = { }
+                )
+            }
+
+            item {
+                SettingsActionRowItem (
+                    icon = SettingsIcon.Drawable(R.drawable.term_of_service),
+                    title = "Terms of Service",
+                    onClick = { }
+                )
+            }
+
+            item {
+                SettingsActionRowItem (
+                    icon = SettingsIcon.Drawable(R.drawable.private_policy),
+                    title = "Privacy Policy",
+                    onClick = { }
+                )
+            }
+
         }
     }
 }

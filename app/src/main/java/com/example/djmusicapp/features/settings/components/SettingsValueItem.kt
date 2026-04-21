@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingsValueItem(
-    icon: ImageVector,
+    icon: SettingsIcon,
     title: String,
     value: String,
     onClick: () -> Unit

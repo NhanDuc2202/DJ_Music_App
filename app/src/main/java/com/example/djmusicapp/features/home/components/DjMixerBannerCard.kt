@@ -87,7 +87,12 @@ fun DjMixerBannerCard(
             .padding(top = 20.dp)
             .height(168.dp)
             .clickable {
-                navController.navigate(Routes.Mixer.route)
+                if (navController.currentDestination?.route != Routes.DjMixer.route) {
+                    navController.navigate(Routes.DjMixer.route) {
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
             }
     ) {
         Box(

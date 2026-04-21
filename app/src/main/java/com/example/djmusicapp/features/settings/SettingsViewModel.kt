@@ -38,4 +38,20 @@ class SettingsViewModel : ViewModel() {
     fun onNotificationsChanged(enabled: Boolean) {
         _uiState.value = _uiState.value.copy(notificationsEnabled = enabled)
     }
+
+    fun onViewRecordingAfterCompletedChanged(enabled: Boolean) {
+        _uiState.value = _uiState.value.copy(viewRecordingAfterCompleted = enabled)
+    }
+
+    fun onUseNotificationBarToPlayMusicChanged(enabled: Boolean) {
+        _uiState.value = _uiState.value.copy(useNotificationBarToPlayMusic = enabled)
+    }
+
+    fun onUseEnglishLanguageChanged(enabled: Boolean) {
+        _uiState.value = _uiState.value.copy(useEnglishLanguage = enabled)
+    }
+
+    fun onHideUpdateReminderChanged(enabled: Boolean) {
+        _uiState.value = _uiState.value.copy(hideUpdateReminder = enabled)
+    }
 }

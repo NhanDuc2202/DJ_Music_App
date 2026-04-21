@@ -50,7 +50,7 @@ fun HomeScreen(navController: NavController) {
         ),
         HomeMenuItem(
             title = "Audio Mixer",
-            route = Routes.Test.route,
+            route = Routes.Mixer.route,
             iconRes = R.drawable.ic_audio_mixer,
             startColor = Color(0xFFFF8A00),
             endColor = Color(0xFFFFD000)

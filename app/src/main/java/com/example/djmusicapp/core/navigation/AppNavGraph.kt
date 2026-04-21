@@ -5,11 +5,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.djmusicapp.features.home.HomeScreen
-import com.example.djmusicapp.features.library.LibraryScreen
-import com.example.djmusicapp.features.merger.AudioMergerScreen
-import com.example.djmusicapp.features.mixer.DjMixerScreen
+import com.example.djmusicapp.features.merger.library.AudioMergerScreen
 import com.example.djmusicapp.features.settings.SettingsScreen
 import com.example.djmusicapp.features.drumpad.TestScreen
+import com.example.djmusicapp.features.mixer.library.AudioMixer
+import com.example.djmusicapp.features.djmixer.DjMixerScreen
 
 @Composable
 fun AppNavGraph() {
@@ -25,17 +25,21 @@ fun AppNavGraph() {
         composable(Routes.Test.route) {
             TestScreen()
         }
-        composable(Routes.Library.route) {
-            LibraryScreen(navController)
-        }
+
         composable(Routes.Merger.route) {
             AudioMergerScreen(navController)
         }
+
         composable(Routes.Mixer.route) {
-            DjMixerScreen(navController)
+            AudioMixer(navController)
         }
+
         composable(Routes.Settings.route) {
             SettingsScreen(navController)
+        }
+
+        composable(Routes.DjMixer.route) {
+            DjMixerScreen(navController)
         }
     }
 }

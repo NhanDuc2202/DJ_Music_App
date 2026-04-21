@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingsToggleItem(
-    icon: ImageVector,
+    icon: SettingsIcon,
     title: String,
     subtitle: String? = null,
     checked: Boolean,
