@@ -11,14 +11,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.djmusicapp.features.djmixer.components.DjCenterMixerPanel
-import com.example.djmusicapp.features.djmixer.components.DjDeckPanel
-import com.example.djmusicapp.features.djmixer.components.DjMixerTopBar
+import com.example.djmusicapp.core.ui.components.CircleBackButton
+import com.example.djmusicapp.features.djmixer.components.mixer.DjCenterMixerPanel
+import com.example.djmusicapp.features.djmixer.components.deck.DjDeckPanel
 
 @Composable
 fun DjMixerScreen(
@@ -51,14 +52,10 @@ fun DjMixerScreen(
             .fillMaxSize()
             .background(Color(0xFF111111))
     ) {
-        DjMixerTopBar(
-            onBackClick = { goBackToPortrait() }
-        )
-
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 34.dp, start = 8.dp, end = 8.dp, bottom = 8.dp),
+                .padding(top = 34.dp, start = 8.dp, end = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             DjDeckPanel(
@@ -75,5 +72,13 @@ fun DjMixerScreen(
                 isLeft = false
             )
         }
+
+        CircleBackButton(
+            onClick = { goBackToPortrait() },
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(start = 24.dp, top = 8.dp)
+        )
+
     }
 }

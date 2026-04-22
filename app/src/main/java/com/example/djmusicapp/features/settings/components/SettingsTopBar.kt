@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.djmusicapp.core.ui.components.CircleBackButton
 
 @Composable
 fun SettingsTopBar(
@@ -29,14 +30,9 @@ fun SettingsTopBar(
             .background(Color(0xFF0B0B14))
             .padding(horizontal = 16.dp, vertical = 14.dp)
     ) {
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-            contentDescription = "Back",
-            tint = Color.White,
-            modifier = Modifier
-                .align(Alignment.CenterStart)
-                .size(24.dp)
-                .clickable { onBackClick() }
+        CircleBackButton(
+            onClick = onBackClick,
+            modifier = Modifier.padding(end = 12.dp)
         )
 
         Text(

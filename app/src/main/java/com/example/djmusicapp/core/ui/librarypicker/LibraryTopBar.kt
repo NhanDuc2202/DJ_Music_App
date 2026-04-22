@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.djmusicapp.core.ui.components.CircleBackButton
 
 @Composable
 fun LibraryTopBar(
@@ -33,11 +34,9 @@ fun LibraryTopBar(
             .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-            contentDescription = "Back",
-            tint = Color.White,
-            modifier = Modifier.clickable { onBackClick() }
+        CircleBackButton(
+            onClick = onBackClick,
+            modifier = Modifier.padding(end = 12.dp)
         )
 
         Row(
@@ -65,7 +64,8 @@ fun LibraryTopBar(
             Icon(
                 imageVector = Icons.Outlined.Search,
                 contentDescription = "Search",
-                tint = Color.White
+                tint = Color.White,
+                modifier = Modifier.clickable() { onSearchClick() }
             )
             Icon(
                 painter = painterResource(id = menuIconRes),
