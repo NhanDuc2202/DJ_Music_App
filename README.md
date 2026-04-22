@@ -32,10 +32,18 @@ The focus of this project is to replicate the UI as closely as possible, maintai
 - `data/model/`
 
 ## How to Run the App
-1. Open the project in Android Studio
-2. Sync Gradle
-3. Run the app on an emulator or a physical Android device
-4. Minimum SDK: 24
+
+1. Open Android Studio.
+2. Select **Open** and choose the project folder.
+3. Wait until Gradle sync completes successfully.
+4. Connect an Android device or start an emulator.
+5. Select the `app` configuration in the top toolbar.
+6. Click **Run** to launch the project.
+
+### Notes
+- This project uses static/mock data only.
+- No backend configuration is needed.
+- No additional environment variables are required.
 
 ## Assumptions
 - Static/mock data is used because backend integration is not required in the test scope
