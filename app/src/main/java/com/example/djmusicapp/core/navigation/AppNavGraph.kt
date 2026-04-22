@@ -17,7 +17,7 @@ fun AppNavGraph() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.DjMixer.route
+        startDestination = Routes.Home.route
     ) {
         composable(Routes.Home.route) {
             HomeScreen(navController)
